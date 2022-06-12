@@ -54,14 +54,14 @@ export class Node<T> {
     return node;
   }
 
-  delete(node: Node<T> | undefined, value: T): Node<T> | undefined {
+  delete(node: Node<T>, value: T): Node<T> {
     if (!node) return node;
     if (value < node.value) {
       node.leftChild = node.delete(node.leftChild, value);
     } else if (value > node.value) {
       node.rightChild = node.delete(node.rightChild, value);
     } else if (node.leftChild && node.rightChild) {
-      node.value = node.getMinimum(node.rightChild)!.value;
+      node.value = node.getMinimum(node.rightChild).value;
       node.rightChild = node.delete(node.rightChild, node.value);
     } else {
       if (node.leftChild) node = node.leftChild;
@@ -71,4 +71,4 @@ export class Node<T> {
 
     return node;
   }
-};
+}

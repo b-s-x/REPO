@@ -40,7 +40,7 @@ export const treeTraversePostOrder = <T>(
   action: typeof console.log
 ) => tree.traversePostOrder(action);
 
-export const findNode = <T>(tree: Node<T>, value: any) => {
+export const findNode = <T>(tree: Node<T>, value: T) => {
   const result = tree.search(value);
   console.log("findNode:", result);
 };

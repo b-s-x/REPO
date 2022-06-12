@@ -1,12 +1,12 @@
 import {
   createSimpleTree,
-  treeTraverseInOrder,
-  treeTraversePreOrder,
-  treeTraversePostOrder,
-  findNode,
-  getMinimum,
-  getMaximum,
-  insert,
+  // treeTraverseInOrder,
+  // treeTraversePreOrder,
+  // treeTraversePostOrder,
+  // findNode,
+  // getMinimum,
+  // getMaximum,
+  // insert,
   deleteNode
 } from "./Example";
 
