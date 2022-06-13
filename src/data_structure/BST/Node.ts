@@ -1,4 +1,19 @@
-export class Node<T> {
+interface INode<T> {
+  value: T;
+  leftChild?: Node<T>;
+  rightChild?: Node<T>;
+  root?: Node<T>;
+  traverseInOrder(action: (value: T) => void): void;
+  traversePreOrder(action: (value: T) => void): void;
+  traversePostOrder(action: (value: T) => void): void;
+  search(value: T): Node<T> | undefined;
+  getMinimum(node: Node<T>): Node<T> | undefined;
+  getMaximum(node: Node<T>): Node<T> | undefined;
+  insert(node: Node<T> | undefined, value: T): Node<T>;
+  delete(node: Node<T>, value: T): Node<T>;
+}
+
+export class Node<T> implements INode<T> {
   leftChild?: Node<T>;
   rightChild?: Node<T>;
   root?: Node<T>;
