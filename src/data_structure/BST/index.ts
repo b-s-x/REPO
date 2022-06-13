@@ -7,8 +7,8 @@ import {
   // getMinimum,
   // getMaximum,
   // insert,
-  deleteNode
-} from "./Example";
+  deleteNode,
+} from './Example';
 
 const tree = createSimpleTree();
 

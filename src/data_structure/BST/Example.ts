@@ -1,4 +1,4 @@
-import { Node } from "./Node";
+import { Node } from './Node';
 
 export const createSimpleTree = () => {
   const zero = new Node(0);
@@ -42,7 +42,7 @@ export const treeTraversePostOrder = <T>(
 
 export const findNode = <T>(tree: Node<T>, value: T) => {
   const result = tree.search(value);
-  console.log("findNode:", result);
+  console.log('findNode:', result);
 };
 
 export const getMinimum = <T>(tree: Node<T>) => {

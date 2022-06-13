@@ -1,13 +1,16 @@
 {
-  "name": "Repo",
+  "name": "repo",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint --ext .js,.ts ."
+    "lint": "eslint --ext .js,.ts .",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "devDependencies": {
     "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.6.2",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
   },
