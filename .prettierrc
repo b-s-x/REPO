@@ -3,6 +3,5 @@
   "singleQuote": true,
   "arrowParens": "avoid",
   "bracketSpacing": true,
-  "bracketSameLine": false,
-  "arrowParens": "avoid"
+  "bracketSameLine": false
 }
