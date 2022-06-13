@@ -1,4 +1,4 @@
-import { LinkedList } from "../List";
+import { LinkedList } from '../List';
 
 export class ExampleLinkedList {
   public push() {
@@ -6,7 +6,7 @@ export class ExampleLinkedList {
     list.push(1);
     list.push(2);
     list.push(3);
-    console.log("push", list);
+    console.log('push', list);
   }
 
   public append() {
@@ -14,7 +14,7 @@ export class ExampleLinkedList {
     list.append(1);
     list.append(2);
     list.append(3);
-    console.log("append", list);
+    console.log('append', list);
   }
 
   public nodeAt(index: number) {
@@ -23,7 +23,7 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const node = list.nodeAt(index);
-    console.log("nodeAt", node);
+    console.log('nodeAt', node);
   }
 
   public insertAfter() {
@@ -32,9 +32,9 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const node = list.nodeAt(1);
-    const newNode = list.insertAfter(node!, 42);
-    console.log("insertAfter", newNode);
-    console.log("list", list);
+    const newNode = list.insertAfter(node, 42);
+    console.log('insertAfter', newNode);
+    console.log('list', list);
   }
 
   public pop() {
@@ -43,8 +43,8 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const value = list.pop();
-    console.log("value", value);
-    console.log("list after", list);
+    console.log('value', value);
+    console.log('list after', list);
   }
 
   public removeLast() {
@@ -53,8 +53,8 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const value = list.removeLast();
-    console.log("value", value);
-    console.log("list after", list);
+    console.log('value', value);
+    console.log('list after', list);
   }
 
   public removeAfter(index: number) {
@@ -63,9 +63,9 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const node = list.nodeAt(index);
-    const newNode = list.removeAfter(node!);
-    console.log("removeAfter", newNode);
-    console.log("list", list);
+    const newNode = list.removeAfter(node);
+    console.log('removeAfter', newNode);
+    console.log('list', list);
   }
 
   public size() {
@@ -74,6 +74,6 @@ export class ExampleLinkedList {
     list.push(2);
     list.push(3);
     const size = list.size();
-    console.log("size", size);
+    console.log('size', size);
   }
 }
