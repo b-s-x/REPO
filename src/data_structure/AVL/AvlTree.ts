@@ -26,8 +26,8 @@ export class AvlTree<T> implements IAvlTree<T> {
     node.rightChild = pivot.leftChild;
     pivot.leftChild = node;
 
-    node.height = 1 + Math.max(node.leftHeight(), node.rightHeight());
-    pivot.height = 1 + Math.max(pivot.leftHeight(), pivot.rightHeight());
+    node.height = this._updateBalanced(node);
+    pivot.height = this._updateBalanced(pivot);
     return pivot;
   }
 
@@ -36,8 +36,8 @@ export class AvlTree<T> implements IAvlTree<T> {
     node.leftChild = pivot.rightChild;
     pivot.rightChild = node;
 
-    node.height = 1 + Math.max(node.leftHeight(), node.rightHeight());
-    pivot.height = 1 + Math.max(pivot.leftHeight(), node.rightHeight());
+    node.height = this._updateBalanced(node);
+    pivot.height = this._updateBalanced(pivot);
     return pivot;
   }
 
@@ -121,5 +121,9 @@ export class AvlTree<T> implements IAvlTree<T> {
     if (!node.leftChild) return node.rightChild;
     node.leftChild = this._removeMin(node.leftChild);
     return this.balanced(node);
+  }
+
+  protected _updateBalanced(node: AvlNode<T>): number {
+    return 1 + Math.max(node.leftHeight(), node.rightHeight());
   }
 }
