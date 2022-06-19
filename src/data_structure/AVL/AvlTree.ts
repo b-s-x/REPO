@@ -92,8 +92,7 @@ export class AvlTree<T> implements IAvlTree<T> {
     }
 
     const balanceNode = this.balanced(node);
-    balanceNode.height =
-      1 + Math.max(balanceNode.leftHeight(), balanceNode.rightHeight());
+    balanceNode.height = this._updateBalanced(balanceNode);
 
     return balanceNode;
   }
