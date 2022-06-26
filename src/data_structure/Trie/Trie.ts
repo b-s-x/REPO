@@ -1,9 +1,16 @@
 import { TrieNode } from './TrieNode';
 
 export class Trie {
-  public root: TrieNode<number>;
+  private root: TrieNode<number>;
+  private trieLength: number;
+
   constructor() {
     this.root = new TrieNode(null, null);
+    this.trieLength = 0;
+  }
+
+  public get length(): number {
+    return this.trieLength;
   }
 
   insert(text: string): void {
@@ -12,6 +19,7 @@ export class Trie {
       const charCode = text.charCodeAt(i);
       if (!current.children.has(charCode)) {
         current.children.set(charCode, new TrieNode(charCode, current));
+        this.trieLength += 1;
       }
       current = current?.children.get(charCode);
     }
@@ -47,6 +55,7 @@ export class Trie {
       !current.isTerminating
     ) {
       current.parent.children.set(current.key, null);
+      this.trieLength -= 1;
       current = current.parent;
     }
   }
