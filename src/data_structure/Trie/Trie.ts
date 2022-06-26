@@ -1,25 +1,32 @@
 import { TrieNode } from './TrieNode';
 
-export class Trie {
+interface ITrie {
+  insert(text: string): void;
+  contains(text: string): boolean;
+  remove(text: string): void;
+  matchPrefix(prefix: string): string[];
+}
+
+export class Trie implements ITrie {
   private root: TrieNode<number>;
-  private trieLength: number;
+  private _length: number;
 
   constructor() {
     this.root = new TrieNode(null, null);
-    this.trieLength = 0;
+    this._length = 0;
   }
 
   public get length(): number {
-    return this.trieLength;
+    return this._length;
   }
 
-  insert(text: string): void {
+  public insert(text: string): void {
     let current = this.root;
     for (let i = 0; i < text.length; i++) {
       const charCode = text.charCodeAt(i);
       if (!current.children.has(charCode)) {
         current.children.set(charCode, new TrieNode(charCode, current));
-        this.trieLength += 1;
+        this._length += 1;
       }
       current = current?.children.get(charCode);
     }
@@ -27,7 +34,7 @@ export class Trie {
     current.isTerminating = true;
   }
 
-  contains(text: string): boolean {
+  public contains(text: string): boolean {
     let current = this.root;
     for (let i = 0; i < text.length; i++) {
       const charCode = text.charCodeAt(i);
@@ -38,7 +45,7 @@ export class Trie {
     return current.isTerminating;
   }
 
-  remove(text: string): void {
+  public remove(text: string): void {
     let current = this.root;
     for (let i = 0; i < text.length; i++) {
       const charCode = text.charCodeAt(i);
@@ -55,12 +62,12 @@ export class Trie {
       !current.isTerminating
     ) {
       current.parent.children.set(current.key, null);
-      this.trieLength -= 1;
+      this._length -= 1;
       current = current.parent;
     }
   }
 
-  matchPrefix(prefix: string): string[] {
+  public matchPrefix(prefix: string): string[] {
     let current = this.root;
 
     for (let i = 0; i <= prefix.length; i++) {
@@ -71,10 +78,10 @@ export class Trie {
       current = child;
     }
 
-    return this._moreMatches(prefix, current);
+    return this.moreMatches(prefix, current);
   }
 
-  _moreMatches(prefix: string, node: TrieNode<number>): string[] {
+  private moreMatches(prefix: string, node: TrieNode<number>): string[] {
     let results = [];
     if (node.isTerminating) results.push(prefix);
 
@@ -82,10 +89,7 @@ export class Trie {
       const charCode = child.key;
       results = [
         ...results,
-        ...this._moreMatches(
-          `${prefix}${String.fromCharCode(charCode)}`,
-          child
-        ),
+        ...this.moreMatches(`${prefix}${String.fromCharCode(charCode)}`, child),
       ];
     }
     return results;
